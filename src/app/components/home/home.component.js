@@ -12,6 +12,14 @@ angular
         $stateProvider
             .state('app.home', {
                 url: '/home',
-                component: 'home'
+                component: 'home',
+                bindings: {
+                    userName: 'getAuthenticatedUser'
+                },
+                resolve: {
+                    getAuthenticatedUser: AuthService => {
+                        return AuthService.getAuthenticatedUser();
+                    }
+                }
             });
     });
